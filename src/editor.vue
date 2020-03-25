@@ -146,9 +146,12 @@
                 }
 
                 const selection = window.getSelection();
-                const node =  document.createTextNode(start + end);
+                const inContainer = isInContainer(selection.baseNode, this.$refs.editor);
 
-                if (isInContainer(selection.baseNode, this.$refs.editor)) {
+                const innerText = inContainer ? selection.toString() : '';
+                const node =  document.createTextNode(`${start}${innerText}${end}`);
+
+                if (inContainer) {
                     const range = selection.getRangeAt(0);
                     range.deleteContents();
                     range.insertNode(node);
