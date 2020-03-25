@@ -1,0 +1,28 @@
+{
+  "name": "vue-md-editor",
+  "version": "0.1.0",
+  "description": "A simple markdown editor for vue",
+  "main": "src/index.js",
+  "scripts": {},
+  "keywords": [
+    "Vue",
+    "Vuejs",
+    "md",
+    "markdown",
+    "editor"
+  ],
+  "author": "Daan Kloetstra",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^0.8.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrdaano/vue-md-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mrdaano/vue-md-editor/issues"
+  },
+  "homepage": "https://github.com/mrdaano/vue-md-editor#readme"
+}
