@@ -1,11 +1,11 @@
 # Vue markdown editor
 This is a basic markdown editor made for Vue, based on Bootstrap and Font Awesome.
 
-**This package is under development right now. If you see any bugs pleas report them**
+**This package is under development right now. If you see any bugs please report them**
 
 ## Pre requirements
 - Install [Font Awesome](https://fontawesome.com/) for the toolbar icons.
-- If you want you can install [Bootstrap](https://getbootstrap.com/) or do the styling custom.
+- If you want you can install [Bootstrap](https://getbootstrap.com/) or do the styling by yourself.
 
 ## Installation
 First install this package via npm or yarn:
@@ -20,7 +20,7 @@ import Vue from 'vue';
 Vue.use(mdEditor);
 ```
 ## Usage and examples
-Now you can use the markdown editor in your Vue components. You can use it with or without ``v-model``.
+Now you can use the markdown editor in your Vue container or components. You can use it with or without ``v-model``.
 ### Basic usage
 ```html
 <template>
