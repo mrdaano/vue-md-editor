@@ -136,6 +136,8 @@
                         this.showPreview = !this.showPreview;
                     break;
                 }
+
+                this.$emit('input', this.$refs.editor.innerText);
             },
             insertLink(title = 'Tile here', link = 'https://example.com') {
                 if (!isUrl(link)) return;

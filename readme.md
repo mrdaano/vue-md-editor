@@ -54,6 +54,7 @@ All custom classes are prefixed with ``.md-editor-*``. Below you will find an ov
 ## Requested features
 The requested features below will be implemented soon.
 - Custom toolbar button support
+- Support for keyboard shortcuts
 - Inline syntax highlighting
 - Side by side (editor and preview)
 - Autosave feature
