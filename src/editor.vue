@@ -165,9 +165,19 @@
                 this.$refs.editor.focus();
             },
             _insertCode() {
-                const node = document.createTextNode('\n``` \n\n```');
+                if (this.value.trim() !== '') {
+                    this.$refs.editor.append(document.createElement('br'));
+                }
+
+                this.$refs.editor.append(document.createTextNode('```'));
+
+                const node = document.createElement('div');
+                node.innerHTML = '&nbsp;';
                 this.$refs.editor.append(node);
-                moveCursorToPoint(node, 6);
+
+                this.$refs.editor.append(document.createTextNode('```'));
+
+                moveCursorToPoint(node, 1);
                 this.$refs.editor.focus()
             },
             _insertQuote() {
