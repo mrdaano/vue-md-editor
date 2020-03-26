@@ -3,6 +3,9 @@ This is a basic markdown editor made for Vue, based on Bootstrap and Font Awesom
 
 **This package is under development right now. If you see any bugs please report them**
 
+## Example
+You can find a example on [Codesandbox](https://codesandbox.io/s/github/mrdaano/vue-md-editor-example) or on [GitHub](https://github.com/mrdaano/vue-md-editor-example)
+
 ## Pre requirements
 - Install [Font Awesome](https://fontawesome.com/) for the toolbar icons.
 - If you want you can install [Bootstrap](https://getbootstrap.com/) or do the styling by yourself.
