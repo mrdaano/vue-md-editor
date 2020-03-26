@@ -171,9 +171,13 @@
                 this.$refs.editor.focus()
             },
             _insertQuote() {
-                const node = document.createTextNode('\n>');
+                if (this.value.trim() !== '') {
+                    this.$refs.editor.append(document.createElement('br'));
+                }
+
+                const node = document.createTextNode('>');
                 this.$refs.editor.append(node);
-                moveCursorToPoint(node, 2);
+                moveCursorToPoint(node, 1);
                 this.$refs.editor.focus();
             }
         }
