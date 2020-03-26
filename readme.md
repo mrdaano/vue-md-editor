@@ -1,8 +1,6 @@
 # Vue markdown editor
 This is a basic markdown editor made for Vue, based on Bootstrap and Font Awesome.
 
-**This package is under development right now. If you see any bugs please report them**
-
 ## Example
 You can find a example on [Codesandbox](https://codesandbox.io/s/github/mrdaano/vue-md-editor-example) or on [GitHub](https://github.com/mrdaano/vue-md-editor-example)
 
@@ -52,3 +50,12 @@ All custom classes are prefixed with ``.md-editor-*``. Below you will find an ov
 |``.md-editor-toolbar``  | Toolbar containing all buttons.                                                   |
 |``.md-editor-editor``   | The editor itself (typ area).                                                     |
 |``.md-editor-preview``  | When you click on preview button this area shows up containing a rendered preview.|
+
+## Requested features
+The requested features below will be implemented soon.
+- Custom toolbar button support
+- Inline syntax highlighting
+- Side by side (editor and preview)
+- Autosave feature
+
+Do you have a feature request? Let us know via an [issue](https://github.com/mrdaano/vue-md-editor/issues)

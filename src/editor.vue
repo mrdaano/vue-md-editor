@@ -2,7 +2,7 @@
     <div class="md-editor-container">
         <div class="md-editor-toolbar mb-2">
             <div v-for="bar in toolbar" class="btn-group mr-1" role="group" :aria-label="bar.label">
-                <button v-for="item in bar.items" class="btn btn-primary" @click.prevent="insert(item.key)"><i :class="item.icon"></i></button>
+                <button v-for="item in bar.items" class="btn btn-primary" @click.prevent="insert(item.key)" :disabled="showPreview && item.disabledOnPreview"><i :class="item.icon"></i></button>
             </div>
         </div>
         <div
@@ -38,17 +38,20 @@
                           {
                               label: 'Bold',
                               icon: 'fas fa-bold',
-                              key: 'bold'
+                              key: 'bold',
+                              disabledOnPreview: true
                           },
                           {
                               label: 'Italic',
                               icon: 'fas fa-italic',
-                              key: 'italic'
+                              key: 'italic',
+                              disabledOnPreview: true
                           },
                           {
                               label: 'Strikethrough',
                               icon: 'fas fa-strikethrough',
-                              key: 'strikethrough'
+                              key: 'strikethrough',
+                              disabledOnPreview: true
                           }
                       ]
                   },
@@ -58,22 +61,26 @@
                           {
                               label: 'Link',
                               icon: 'fas fa-link',
-                              key: 'link'
+                              key: 'link',
+                              disabledOnPreview: true
                           },
                           {
                               label: 'Image',
                               icon: 'fas fa-image',
-                              key: 'image'
+                              key: 'image',
+                              disabledOnPreview: true
                           },
                           {
                               label: 'Quote',
                               icon: 'fas fa-quote-right',
-                              key: 'quote'
+                              key: 'quote',
+                              disabledOnPreview: true
                           },
                           {
                               label: 'Code block',
                               icon: 'fas fa-code',
-                              key: 'code'
+                              key: 'code',
+                              disabledOnPreview: true
                           }
                       ]
                   },
@@ -105,13 +112,13 @@
             insert(key) {
                 switch (key) {
                     case 'bold':
-                        this._insertBlock('**');
+                        this.insertBlock('**');
                     break;
                     case 'italic':
-                        this._insertBlock('*');
+                        this.insertBlock('*');
                     break;
                     case 'strikethrough':
-                        this._insertBlock('~~');
+                        this.insertBlock('~~');
                     break;
                     case 'quote':
                         this._insertQuote();
@@ -140,7 +147,7 @@
 
                 this.$refs.editor.innerText = this.value + `![${altText}](${src})`;
             },
-            _insertBlock(start, end) {
+            insertBlock(start, end) {
                 if (!end) {
                     end = start;
                 }
@@ -160,9 +167,7 @@
                 }
 
                 const newCursorPosition = node.textContent.length - end.length;
-
-                moveCursorToPoint(node, newCursorPosition);
-                this.$refs.editor.focus();
+                this._moverCursor(node, newCursorPosition);
             },
             _insertCode() {
                 if (this.value.trim() !== '') {
@@ -177,8 +182,7 @@
 
                 this.$refs.editor.append(document.createTextNode('```'));
 
-                moveCursorToPoint(node, 1);
-                this.$refs.editor.focus()
+                this._moverCursor(node, 1);
             },
             _insertQuote() {
                 if (this.value.trim() !== '') {
@@ -187,7 +191,10 @@
 
                 const node = document.createTextNode('>');
                 this.$refs.editor.append(node);
-                moveCursorToPoint(node, 1);
+                this._moverCursor(node , 1);
+            },
+            _moverCursor(node, position) {
+                moveCursorToPoint(node, position);
                 this.$refs.editor.focus();
             }
         }
