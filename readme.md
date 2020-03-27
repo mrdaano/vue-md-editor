@@ -78,13 +78,13 @@ When the button is clicked, an event is fired prefixed with ``insert:`` and afte
                             group: 'advanced'
                         }
                     ]
-                }
-            },
-            mounted() {
-              this.$refs.editor.$on('insert:cat', (editor) => {
-                  editor.insertImage('Cat image', 'http://placekitten.com/100/100');
-              });
-            },
+            }
+        },
+        mounted() {
+          this.$refs.editor.$on('insert:cat', (editor) => {
+              editor.insertImage('Cat image', 'http://placekitten.com/100/100');
+          });
+        }
     }
 </script>
 ```
