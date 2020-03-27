@@ -54,9 +54,9 @@ When the button is clicked, an event is fired prefixed with ``insert:`` and afte
 
 | Function | Params |
 |----------|--------|
-| insertBlock | start, end (default: start) |
-| insertImage | altText, src |
-| insertLink | title, link |
+| ``insertBlock`` | start, end (default: start) |
+| ``insertImage`` | altText, src |
+| ``insertLink`` | title, link |
 
 ```html
 <template>
@@ -101,7 +101,6 @@ All custom classes are prefixed with ``.md-editor-*``. Below you will find an ov
 
 ## Requested features
 The requested features below will be implemented soon.
-- Custom toolbar button support
 - Rearrange toolbar
 - Support for keyboard shortcuts
 - Inline syntax highlighting
