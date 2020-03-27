@@ -1,7 +1,7 @@
 <template>
     <div class="md-editor-container">
         <div class="md-editor-toolbar mb-2">
-            <div v-for="bar in toolbar" class="btn-group mr-1" role="group" :aria-label="bar.label">
+            <div v-for="bar in toolbar" v-if="bar.items.length > 0" class="btn-group mr-1" role="group" :aria-label="bar.label">
                 <button v-for="item in bar.items" class="btn btn-primary" @click.prevent="insert(item.key)" :disabled="showPreview && item.disabledOnPreview"><i :class="item.icon"></i></button>
             </div>
         </div>
@@ -36,17 +36,11 @@
         data() {
           return {
               showPreview: false,
-              toolbar
+              toolbar: []
           }
         },
         mounted() {
-            if (this.custombuttons.length > 0) {
-                this.toolbar = [...this.toolbar, {
-                    label: 'Custom',
-                    items: this.custombuttons
-                }]
-            }
-
+            this._buildToolbar();
             this.$refs.editor.innerText = this.value;
         },
         computed: {
@@ -153,6 +147,21 @@
             _moverCursor(node, position) {
                 moveCursorToPoint(node, position);
                 this.$refs.editor.focus();
+            },
+            _buildToolbar() {
+                const editorToolbar = toolbar.groups;
+                const buttons = toolbar.buttons.concat(this.custombuttons);
+
+                buttons.forEach(item => {
+                    item.group = item.group || 'custom';
+                    const group = editorToolbar.find(g => g.key === item.group);
+
+                    if (group) {
+                       group.items.push(item);
+                    }
+                });
+
+                this.toolbar = editorToolbar;
             }
         }
     }
