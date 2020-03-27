@@ -17,7 +17,8 @@
     </div>
 </template>
 <script>
-    import { isUrl, moveCursorToPoint, isInContainer } from "./helpers";
+    import { isUrl, moveCursorToPoint, isInContainer } from "./helpers/helpers";
+    import toolbar from "./helpers/toolbar";
     import marked from 'marked';
 
     export default {
@@ -26,78 +27,26 @@
             value: {
                 type: String,
                 default: ''
+            },
+            custombuttons: {
+                type: Array,
+                default: () => []
             }
         },
         data() {
           return {
               showPreview: false,
-              toolbar: [
-                  {
-                      label: 'Basic markup',
-                      items: [
-                          {
-                              label: 'Bold',
-                              icon: 'fas fa-bold',
-                              key: 'bold',
-                              disabledOnPreview: true
-                          },
-                          {
-                              label: 'Italic',
-                              icon: 'fas fa-italic',
-                              key: 'italic',
-                              disabledOnPreview: true
-                          },
-                          {
-                              label: 'Strikethrough',
-                              icon: 'fas fa-strikethrough',
-                              key: 'strikethrough',
-                              disabledOnPreview: true
-                          }
-                      ]
-                  },
-                  {
-                      label: 'Advanced markup',
-                      items: [
-                          {
-                              label: 'Link',
-                              icon: 'fas fa-link',
-                              key: 'link',
-                              disabledOnPreview: true
-                          },
-                          {
-                              label: 'Image',
-                              icon: 'fas fa-image',
-                              key: 'image',
-                              disabledOnPreview: true
-                          },
-                          {
-                              label: 'Quote',
-                              icon: 'fas fa-quote-right',
-                              key: 'quote',
-                              disabledOnPreview: true
-                          },
-                          {
-                              label: 'Code block',
-                              icon: 'fas fa-code',
-                              key: 'code',
-                              disabledOnPreview: true
-                          }
-                      ]
-                  },
-                  {
-                      label: 'Other',
-                      items: [
-                          {
-                              label: 'Preview',
-                              icon: 'fas fa-eye',
-                              key: 'preview'
-                          }
-                      ]
-                  }
-              ]
+              toolbar
           }
         },
         mounted() {
+            if (this.custombuttons.length > 0) {
+                this.toolbar = [...this.toolbar, {
+                    label: 'Custom',
+                    items: this.custombuttons
+                }]
+            }
+
             this.$refs.editor.innerText = this.value;
         },
         computed: {
@@ -110,6 +59,12 @@
                 this.$emit('input', event.target.innerText);
             },
             insert(key) {
+                this.$emit(`insert:${key}`, {
+                    insertBlock: this.insertBlock,
+                    insertImage: this.insertImage,
+                    insertLink: this.insertLink
+                });
+
                 switch (key) {
                     case 'bold':
                         this.insertBlock('**');
