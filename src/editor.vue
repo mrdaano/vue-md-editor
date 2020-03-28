@@ -9,7 +9,6 @@
                 contenteditable="true"
                 ref="editor"
                 @input="updateContent"
-                style="height: 200px; overflow: auto;"
                 :class="{'md-editor-hide': showPreview}"
                 class="md-editor-editor form-control">
         </div>
@@ -169,5 +168,10 @@
 <style>
     .md-editor-hide {
         display: none;
+    }
+
+    .md-editor-editor {
+        min-height: 200px;
+        overflow: auto;
     }
 </style>

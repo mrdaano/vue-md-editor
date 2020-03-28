@@ -11,7 +11,7 @@ You can find a example on [Codesandbox](https://codesandbox.io/s/github/mrdaano/
 ## Installation
 First install this package via npm or yarn:
 ```
-npm i vue-md-editor or yarn install vue-md-editor
+npm i vue-simple-md-editor or yarn install vue-simple-md-editor
 ```
 And then simply add in your Vue setup script:
 ```javascript
