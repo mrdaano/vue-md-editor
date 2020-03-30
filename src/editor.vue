@@ -30,6 +30,10 @@
             custombuttons: {
                 type: Array,
                 default: () => []
+            },
+            disabledbuttons: {
+                type: Array,
+                default: () => []
             }
         },
         data() {
@@ -152,6 +156,10 @@
                 const buttons = toolbar.buttons.concat(this.custombuttons);
 
                 buttons.forEach(item => {
+                    if (this.disabledbuttons.includes(item.key)) {
+                        return;
+                    }
+
                     item.group = item.group || 'custom';
                     const group = editorToolbar.find(g => g.key === item.group);
 
