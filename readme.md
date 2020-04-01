@@ -88,6 +88,11 @@ When the button is clicked, an event is fired prefixed with ``insert:`` and afte
     }
 </script>
 ```
+### All available Props
+| Prop | Default | Description |
+|------|---------|-------------|
+| ``custombuttons`` | [] | An array with objects to add custom button(s) to the toolbar. See example above. |
+| ``disabledbuttons`` | [] | An array of button keys of which button need to be removed from the toolbar. |
 ### Styling
 The styling of this plugin is based on Bootstrap and the icons are from Font Awesome. But this plugin also uses custom classes so you can easily change the styling.
 All custom classes are prefixed with ``.md-editor-*``. Below you will find an overview of all classes.
